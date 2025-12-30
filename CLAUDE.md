@@ -11,7 +11,7 @@ TypeScript, React 19, shadcn/ui, Tailwind CSS 4로 구축된 Next.js 16 스타�
 ### 개발
 ```bash
 npm run dev      # http://localhost:3000에서 개발 서버 시작
-npm run build    # 프로덕션 빌드 (TypeScript 체크 + Next.js 빌드 실행)
+npm run build    # Next.js 프로덕션 빌드
 npm run start    # 프로덕션 서버 시작
 npm run lint     # ESLint 실행
 ```
@@ -35,10 +35,10 @@ npm run lint     # ESLint 실행
 ```
 components/
 ├── ui/              # shadcn/ui 기본 요소 (Button, Card, Input 등)
-├── animation/       # 재사용 가능한 애니메이션 래퍼 (FadeIn, PageTransition, AnimatedCard)
+├── animation/       # 재사용 가능한 애니메이션 래퍼 (FadeIn, PageTransition, AnimatedCard, SlideIn)
 ├── common/          # 공유 컴포넌트 (Logo, PageHeader)
 ├── navigation/      # 네비게이션 컴포넌트 (NavMenu, MobileNav)
-└── layout/          # 레이아웃 컴포넌트 (Header, Footer, Sidebar)
+└── layout/          # 레이아웃 컴포넌트 (Header, Footer, Sidebar, MainContainer)
 ```
 
 ### 주요 패턴
@@ -65,6 +65,7 @@ components/
 
 #### 애니메이션 컴포넌트
 - `FadeIn` - 방향(up/down/left/right)과 지연 시간을 가진 스크롤 기반 페이드인
+- `SlideIn` - FadeIn과 유사하지만 더 큰 슬라이드 효과, About 페이지에서 주로 사용
 - `PageTransition` - 페이지 전환 래퍼 (레이아웃 파일에 적용됨)
 - `AnimatedCard` - 호버 애니메이션 카드 래퍼
 
@@ -83,7 +84,7 @@ TypeScript 타입은 `types/index.ts`에 중앙화되어 있습니다:
 - `Activity` - 활동 로그 구조
 
 ### 스타일링
-- `@tailwindcss/postcss`와 함께 Tailwind CSS 4 사용
+- **Tailwind CSS 4**: PostCSS 플러그인 방식 사용 (`postcss.config.mjs`에서 설정, 별도의 `tailwind.config.ts` 파일 없음)
 - `cn()` 헬퍼를 사용한 유틸리티 우선 접근 방식 (`lib/utils.ts`에서)
 - 일관된 간격: 페이지 섹션에는 `space-y-8`, 카드 콘텐츠에는 `space-y-4`
 
