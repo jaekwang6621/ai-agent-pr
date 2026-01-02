@@ -112,7 +112,7 @@ const menuItems = [
 ];
 ```
 
-## 기술 스택
+## 기술 스택  
 
 - **프레임워크**: Next.js 16 with App Router
 - **React**: Version 19.2.3
